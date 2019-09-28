@@ -1,6 +1,6 @@
-FROM ubuntu:trusty
+FROM alpine:latest
 
-LABEL maintainer="Kurt Huwig"
+LABEL maintainer="Philipp Staiger"
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     duply \
