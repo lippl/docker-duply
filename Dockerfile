@@ -11,7 +11,7 @@ RUN apk update \
     python-paramiko \
     pwgen \
     rsync \
-    openssh-client \
+    openssh-client #\
 #    && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 ENV HOME /root
