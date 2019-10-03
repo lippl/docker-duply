@@ -2,18 +2,25 @@ FROM alpine:latest
 
 LABEL maintainer="Philipp Staiger"
 
-RUN apk update \
-    && apk add --no-cache  \
-    duply \
-    haveged \
-    ncftp \
-    python-boto \
-    python-paramiko \
-    pwgen \
-    rsync \
-    openssh-client
+RUN apk add --update --no-cache  \
+		bash \
+		gnupg \
+		duply \
+		haveged \
+		ncftp \
+		pwgen \
+		rsync \
+		openssh-client \
+		py-boto \
+   && rm -rf /var/cache/apk/*
+#   && rc-service crond start && rc-update add crond
 #   \
-#   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+#	&& pip install \
+#		boto \
+#		paramiko \
+#		python-dev \
+#   python-boto \
+#   python-paramiko \
 
 ENV HOME /root
 
@@ -32,3 +39,4 @@ COPY files/entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 CMD ["/bin/bash"]
+#CMD ["startcron"]

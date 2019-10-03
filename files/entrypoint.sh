@@ -4,6 +4,9 @@ case "$1" in
     'bash')
         exec bash
         ;;
+    'startcron')
+        exec /usr/sbin/crond -f
+        ;;
     'gen-key')
         if [ "random" = "$PASSPHRASE" ]; then
             PASSPHRASE=$(pwgen 16 1)
