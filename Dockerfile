@@ -2,7 +2,8 @@ FROM alpine:latest
 
 LABEL maintainer="Philipp Staiger"
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+RUN apk update \
+    && apk add --no-cache  \
     duply \
     haveged \
     ncftp \
@@ -11,7 +12,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     pwgen \
     rsync \
     openssh-client \
-    && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+#    && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 ENV HOME /root
 
